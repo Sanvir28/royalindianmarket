@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Royal Indian Market</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #8B0000, #DC143C);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+            color: #8B0000;
+            font-weight: bold;
+        }
+
+        .logo-text h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .logo-text p {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .contact-info h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .contact-info p {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        nav {
+            background: #FFD700;
+            padding: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            display: block;
+            padding: 15px 30px;
+            text-decoration: none;
+            color: #8B0000;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav a:hover, nav a.active {
+            background: #FFA500;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #8B0000, #DC143C);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .page-header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        /* Contact Content */
+        .contact-content {
+            padding: 60px 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border-top: 5px solid #FFD700;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 35px;
+            color: #8B0000;
+        }
+
+        .contact-card h3 {
+            font-size: 24px;
+            color: #8B0000;
+            margin-bottom: 15px;
+        }
+
+        .contact-card p {
+            color: #666;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .contact-card a {
+            color: #8B0000;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            color: #DC143C;
+        }
+
+        /* Map Section */
+        .map-section {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+
+        .map-section h2 {
+            font-size: 32px;
+            color: #8B0000;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .map-container {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Hours Section */
+        .hours-section {
+            background: linear-gradient(135deg, #8B0000, #DC143C);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hours-section h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .hours-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hours-card h3 {
+            color: #FFD700;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .hours-card p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        /* Services Section */
+        .services-section {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .services-section h2 {
+            font-size: 32px;
+            color: #8B0000;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .service-item {
+            text-align: center;
+            padding: 20px;
+            border: 2px solid #FFD700;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .service-item:hover {
+            background: #FFD700;
+            transform: scale(1.05);
+        }
+
+        .service-item h3 {
+            color: #8B0000;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .service-item p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .service-item:hover p {
+            color: #8B0000;
+        }
+
+        /* Social Media Section */
+        .social-section {
+            background: #FFD700;
+            color: #8B0000;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .social-section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .social-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            color: #8B0000;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            background: #8B0000;
+            color: white;
+        }
+
+        .social-link-icon {
+            font-size: 24px;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #FFD700;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ecf0f1;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: #FFD700;
+        }
+
+        .footer-social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .footer-social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #FFD700;
+            color: #2c3e50;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .footer-social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #34495e;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #95a5a6;
+        }
+
+        .footer-bottom a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                text-align: center;
+            }
+
+            .contact-info {
+                text-align: center;
+                margin-top: 20px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav a {
+                padding: 12px 20px;
+            }
+
+            .page-header h1 {
+                font-size: 32px;
+            }
+
+            .map-container {
+                height: 300px;
+            }
+
+            .hours-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">👑</div>
+                    <div class="logo-text">
+                        <h1>ROYAL INDIAN MARKET</h1>
+                        <p>Fresh, Authentic & Always Indian</p>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <h3>(908) 751-5293</h3>
+                    <p>37 Reaville Ave, Flemington, NJ 08822</p>
+                    <p>Daily: 9AM - 9PM</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="delivery.html">Delivery</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>Get in touch with us for groceries, catering, and authentic Indian cuisine</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="contact-content">
+            <!-- Contact Cards -->
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <h3>Call Us</h3>
+                    <p>Main Store</p>
+                    <p><a href="tel:9087515293">(908) 751-5293</a></p>
+                    <p>Kitchen Orders</p>
+                    <p><a href="tel:9087515319">(908) 751-5319</a></p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h3>Visit Us</h3>
+                    <p>37 Reaville Avenue</p>
+                    <p>Flemington, NJ 08822</p>
+                    <p><a href="https://maps.google.com/?q=37+Reaville+Ave,+Flemington,+NJ+08822" target="_blank">Get Directions</a></p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email Us</h3>
+                    <p>For general inquiries</p>
+                    <p><a href="mailto:info@royalindianmarket.com">info@royalindianmarket.com</a></p>
+                    <p>For catering services</p>
+                    <p><a href="mailto:catering@royalindianmarket.com">catering@royalindianmarket.com</a></p>
+                </div>
+            </div>
+
+            <!-- Map Section -->
+            <div class="map-section">
+                <h2>🗺️ Find Us on the Map</h2>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3033.87363540762!2d-74.85954738758237!3d40.50017727130728!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c3f10f6842f61d%3A0x8eb7b93fbc8b407!2sRoyal%20Indian%20Market!5e0!3m2!1sen!2sus!4v1754684830204!5m2!1sen!2sus" 
+                           allowfullscreen="" 
+                           loading="lazy" 
+                           referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+
+            <!-- Hours Section -->
+            <div class="hours-section">
+                <h2>🕐 Store Hours</h2>
+                <p>We're open every day of the week to serve you!</p>
+                <div class="hours-grid">
+                    <div class="hours-card">
+                        <h3>Monday - Thursday</h3>
+                        <p>9:00 AM - 9:00 PM</p>
+                        <p>Regular Hours</p>
+                    </div>
+                    <div class="hours-card">
+                        <h3>Friday - Sunday</h3>
+                        <p>9:00 AM - 9:00 PM</p>
+                        <p>Weekend Specials Available</p>
+                        <p>Live Chat Counter</p>
+                    </div>
+                    <div class="hours-card">
+                        <h3>Kitchen Orders</h3>
+                        <p>Daily Fresh Cooking</p>
+                        <p>Call (908) 751-5319</p>
+                        <p>9:00 AM - 8:30 PM</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Services Section -->
+            <div class="services-section">
+                <h2>🛍️ Our Services</h2>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <h3>🥬 Fresh Groceries</h3>
+                        <p>Daily fresh produce, Indian spices, rice, lentils, and traditional ingredients</p>
+                    </div>
+                    <div class="service-item">
+                        <h3>🍽️ Prepared Foods</h3>
+                        <p>Fresh Indian cuisine prepared daily with authentic recipes and premium ingredients</p>
+                    </div>
+                    <div class="service-item">
+                        <h3>🎉 Catering</h3>
+                        <p>Full catering services for parties, events, and special occasions</p>
+                    </div>
+                    <div class="service-item">
+                        <h3>❄️ Frozen Items</h3>
+                        <p>Convenient frozen Indian meals, snacks, and specialty items</p>
+                    </div>
+                    <div class="service-item">
+                        <h3>🛕 Puja Items</h3>
+                        <p>Complete selection of religious and spiritual items for your needs</p>
+                    </div>
+                    <div class="service-item">
+                        <h3>🌿 Ayurvedic Products</h3>
+                        <p>Natural wellness and Ayurvedic products for healthy living</p>
+                    </div>
+                    <div class="service-item">
+                        <h3>🍯 Indian Sweets</h3>
+                        <p>Traditional sweets and savories made fresh in-house</p>
+                    </div>
+                    <div class="service-item">
+                        <h3>🚚 Delivery</h3>
+                        <p>Available through multiple delivery platforms for your convenience</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Media Section -->
+            <div class="social-section">
+                <h2>📱 Follow Us</h2>
+                <p>Stay updated with our latest specials, fresh arrivals, and community events!</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/shoproyalindian/" target="_blank" class="social-link">
+                        <span class="social-link-icon">📷</span>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="tel:9087515293" class="social-link">
+                        <span class="social-link-icon">📞</span>
+                        <span>Call Now</span>
+                    </a>
+                    <a href="https://maps.google.com/?q=37+Reaville+Ave,+Flemington,+NJ+08822" target="_blank" class="social-link">
+                        <span class="social-link-icon">🗺️</span>
+                        <span>Directions</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p>📍 37 Reaville Ave, Flemington, NJ 08822</p>
+                    <p>📞 (908) 751-5293</p>
+                    <p>🍽️ Kitchen: (908) 751-5319</p>
+                    <p>🕘 Daily: 9AM - 9PM</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <p><a href="menu.html">Fresh Prepared Foods</a></p>
+                    <p><a href="delivery.html">Delivery & Takeout</a></p>
+                    <p><a href="contact.html">Catering Services</a></p>
+                    <p>Indian Grocery Shopping</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <p>Stay updated with our latest specials and fresh arrivals!</p>
+                    <div class="footer-social-links">
+                        <a href="https://www.instagram.com/shoproyalindian/" target="_blank">📷</a>
+                        <a href="tel:9087515293">📞</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Royal Indian Market. All rights reserved.</p>
+                <p>Contact Sanvir Singh For Website Feedback: <a href="mailto:singhstudios@mail.com">singhstudios@mail.com</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

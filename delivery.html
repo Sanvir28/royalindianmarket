@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Services - Royal Indian Market</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #8B0000, #DC143C);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+            color: #8B0000;
+            font-weight: bold;
+        }
+
+        .logo-text h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .logo-text p {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .contact-info h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .contact-info p {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        nav {
+            background: #FFD700;
+            padding: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            display: block;
+            padding: 15px 30px;
+            text-decoration: none;
+            color: #8B0000;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav a:hover, nav a.active {
+            background: #FFA500;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #8B0000, #DC143C);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .page-header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        /* Delivery Content */
+        .delivery-content {
+            padding: 60px 0;
+        }
+
+        /* Hero Section */
+        .delivery-hero {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 50px;
+            border-top: 5px solid #FFD700;
+        }
+
+        .delivery-hero h2 {
+            font-size: 36px;
+            color: #8B0000;
+            margin-bottom: 20px;
+        }
+
+        .delivery-hero p {
+            font-size: 20px;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .quick-order {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .order-btn {
+            padding: 15px 30px;
+            background: #8B0000;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .order-btn:hover {
+            background: #DC143C;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .order-btn.secondary {
+            background: #FFD700;
+            color: #8B0000;
+        }
+
+        .order-btn.secondary:hover {
+            background: #FFA500;
+        }
+
+        /* Delivery Platforms */
+        .platforms-section {
+            margin-bottom: 50px;
+        }
+
+        .platforms-section h2 {
+            font-size: 32px;
+            color: #8B0000;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .platform-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+
+        .platform-card:hover {
+            transform: translateY(-10px);
+            border-color: #FFD700;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .platform-logo {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 40px;
+            color: #8B0000;
+            font-weight: bold;
+        }
+
+        .platform-card h3 {
+            font-size: 24px;
+            color: #8B0000;
+            margin-bottom: 15px;
+        }
+
+        .platform-card p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .platform-link {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #8B0000;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .platform-link:hover {
+            background: #DC143C;
+            transform: scale(1.05);
+        }
+
+        /* Features Section */
+        .features-section {
+            background: linear-gradient(135deg, #8B0000, #DC143C);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 15px;
+            margin-bottom: 50px;
+        }
+
+        .features-section h2 {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px 25px;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: scale(1.05);
+        }
+
+        .feature-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .feature-item h3 {
+            color: #FFD700;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .feature-item p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        /* Info Section */
+        .info-section {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+
+        .info-section h2 {
+            font-size: 32px;
+            color: #8B0000;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .info-card {
+            padding: 25px;
+            border: 2px solid #FFD700;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            background: #FFD700;
+            transform: scale(1.02);
+        }
+
+        .info-card h3 {
+            color: #8B0000;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .info-card p {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .info-card:hover p {
+            color: #8B0000;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: #FFD700;
+            color: #8B0000;
+            padding: 50px 40px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .contact-section p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 25px;
+            background: white;
+            color: #8B0000;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .contact-btn:hover {
+            background: #8B0000;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .contact-btn-icon {
+            font-size: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #FFD700;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ecf0f1;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: #FFD700;
+        }
+
+        .footer-social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .footer-social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #FFD700;
+            color: #2c3e50;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .footer-social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #34495e;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #95a5a6;
+        }
+
+        .footer-bottom a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                text-align: center;
+            }
+
+            .contact-info {
+                text-align: center;
+                margin-top: 20px;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav a {
+                padding: 12px 20px;
+            }
+
+            .page-header h1 {
+                font-size: 32px;
+            }
+
+            .delivery-hero {
+                padding: 30px 20px;
+            }
+
+            .platforms-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-order,
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">👑</div>
+                    <div class="logo-text">
+                        <h1>ROYAL INDIAN MARKET</h1>
+                        <p>Fresh, Authentic & Always Indian</p>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <h3>(908) 751-5293</h3>
+                    <p>37 Reaville Ave, Flemington, NJ 08822</p>
+                    <p>Daily: 9AM - 9PM</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="delivery.html" class="active">Delivery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Delivery & Takeout</h1>
+            <p>Get authentic Indian cuisine delivered fresh to your door</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="delivery-content">
+            <!-- Hero Section -->
+            <div class="delivery-hero">
+                <h2>🚚 Order Fresh Indian Food Online!</h2>
+                <p>Enjoy our authentic Indian cuisine, fresh groceries, and specialty items delivered straight to your home. Available through multiple platforms for your convenience.</p>
+                <div class="quick-order">
+                    <a href="tel:9087515293" class="order-btn">📞 Call to Order</a>
+                    <a href="#platforms" class="order-btn secondary">🛒 Order Online</a>
+                </div>
+            </div>
+
+            <!-- Delivery Platforms -->
+            <section class="platforms-section" id="platforms">
+                <h2>🍽️ Order Through Our Partner Platforms</h2>
+                <div class="platforms-grid">
+                    <div class="platform-card">
+                        <div class="platform-logo">🚗</div>
+                        <h3>Uber Eats</h3>
+                        <p>Fast delivery from your favorite Indian market. Browse our full menu of prepared foods, snacks, and grocery items.</p>
+                        <a href="https://www.ubereats.com/store/royal-indian-market/VJdX0YH0Xja8Vt27_VEOfg" target="_blank" class="platform-link">Order on Uber Eats</a>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-logo">📱</div>
+                        <h3>Postmates</h3>
+                        <p>Get your favorite Indian dishes and grocery items delivered quickly and efficiently right to your doorstep.</p>
+                        <a href="https://postmates.com/store/royal-indian-market/VJdX0YH0Xja8Vt27_VEOfg" target="_blank" class="platform-link">Order on Postmates</a>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-logo">🍴</div>
+                        <h3>Seamless</h3>
+                        <p>Seamless ordering experience for all your Indian food cravings. Fresh prepared meals and grocery essentials.</p>
+                        <a href="https://www.seamless.com/menu/royal-indian-market-37-reaville-avenue-flemington/11688176" target="_blank" class="platform-link">Order on Seamless</a>
+                    </div>
+
+                    <div class="platform-card">
+                        <div class="platform-logo">🥡</div>
+                        <h3>Grubhub</h3>
+                        <p>Discover authentic Indian flavors with convenient delivery. Fresh food prepared daily with traditional recipes.</p>
+                        <a href="https://www.grubhub.com/restaurant/royal-indian-market-37-reaville-avenue-flemington/11688176" target="_blank" class="platform-link">Order on Grubhub</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <div class="features-section">
+                <h2>✨ Why Choose Our Delivery?</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <span class="feature-icon">🍳</span>
+                        <h3>Fresh Prepared Daily</h3>
+                        <p>All our food is prepared fresh daily using authentic Indian recipes and premium ingredients.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <span class="feature-icon">📦</span>
+                        <h3>Careful Packaging</h3>
+                        <p>We ensure your food arrives hot, fresh, and perfectly packaged to maintain quality and taste.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <span class="feature-icon">⚡</span>
+                        <h3>Quick Delivery</h3>
+                        <p>Fast and reliable delivery service to get your authentic Indian food to you as quickly as possible.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <span class="feature-icon">🛒</span>
+                        <h3>Grocery Items Too</h3>
+                        <p>Order prepared foods along with Indian groceries, spices, and specialty items in one convenient order.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <span class="feature-icon">👨‍🍳</span>
+                        <h3>Authentic Recipes</h3>
+                        <p>Traditional cooking methods and authentic spices ensure every dish tastes like home-cooked Indian food.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <span class="feature-icon">💯</span>
+                        <h3>Quality Guaranteed</h3>
+                        <p>We stand behind the quality of our food and service. Your satisfaction is our top priority.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Information Section -->
+            <div class="info-section">
+                <h2>📋 Delivery Information</h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>🕐 Store & Delivery Hours</h3>
+                        <p><strong>Store Hours:</strong> Daily 9:00 AM - 9:00 PM</p>
+                        <p><strong>Delivery:</strong> Daily 11:00 AM - 8:30 PM</p>
+                        <p><strong>Weekend Specials:</strong> Friday - Sunday</p>
+                        <p><strong>Live Chat Counter:</strong> Weekends Only</p>
+                        <p>Fresh Tandoori items available Friday-Sunday</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>🚚 Delivery Area</h3>
+                        <p><strong>Primary Area:</strong> Flemington, NJ</p>
+                        <p><strong>Extended Area:</strong> Surrounding townships</p>
+                        <p>Delivery fees vary by distance</p>
+                        <p>Check your platform for exact delivery zones</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>💳 Payment Options</h3>
+                        <p><strong>Online:</strong> All major credit cards</p>
+                        <p><strong>Digital Wallets:</strong> PayPal, Apple Pay, Google Pay</p>
+                        <p><strong>Cash:</strong> Available for phone orders</p>
+                        <p>Secure payment processing on all platforms</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>📱 Order Methods</h3>
+                        <p><strong>Phone Orders:</strong> (908) 751-5293</p>
+                        <p><strong>Kitchen Orders:</strong> (908) 751-5319</p>
+                        <p><strong>Online Platforms:</strong> Multiple options available</p>
+                        <p>In-store pickup also available</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Special Services -->
+            <div class="info-section">
+                <h2>🎯 Special Services</h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>🎉 Catering Delivery</h3>
+                        <p><strong>Party Platters:</strong> Available for delivery</p>
+                        <p><strong>Advance Notice:</strong> 24-48 hours preferred</p>
+                        <p><strong>Minimum Orders:</strong> Apply for catering</p>
+                        <p>Perfect for events, parties, and celebrations</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>🛍️ Grocery Delivery</h3>
+                        <p><strong>Fresh Produce:</strong> Daily fresh vegetables and fruits</p>
+                        <p><strong>Indian Spices:</strong> Complete selection available</p>
+                        <p><strong>Frozen Items:</strong> Meals, snacks, and specialty foods</p>
+                        <p>Get all your Indian grocery needs delivered</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>🍽️ Meal Planning</h3>
+                        <p><strong>Weekly Orders:</strong> Set up regular deliveries</p>
+                        <p><strong>Family Portions:</strong> Large quantity options</p>
+                        <p><strong>Custom Requests:</strong> Special dietary needs</p>
+                        <p>Call to discuss your meal planning needs</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>🚀 Express Delivery</h3>
+                        <p><strong>Rush Orders:</strong> Available during peak hours</p>
+                        <p><strong>Same-Day:</strong> Order by 2 PM for same-day delivery</p>
+                        <p><strong>Priority Service:</strong> Extra fee applies</p>
+                        <p>Perfect for last-minute meal needs</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="contact-section">
+                <h2>📞 Questions About Delivery?</h2>
+                <p>Our team is here to help with your orders and delivery needs!</p>
+                <div class="contact-buttons">
+                    <a href="tel:9087515293" class="contact-btn">
+                        <span class="contact-btn-icon">📞</span>
+                        <span>Call Main Store</span>
+                    </a>
+                    <a href="tel:9087515319" class="contact-btn">
+                        <span class="contact-btn-icon">🍽️</span>
+                        <span>Call Kitchen</span>
+                    </a>
+                    <a href="https://www.instagram.com/shoproyalindian/" target="_blank" class="contact-btn">
+                        <span class="contact-btn-icon">📱</span>
+                        <span>Follow Updates</span>
+                    </a>
+                    <a href="contact.html" class="contact-btn">
+                        <span class="contact-btn-icon">📧</span>
+                        <span>Contact Us</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p>📍 37 Reaville Ave, Flemington, NJ 08822</p>
+                    <p>📞 (908) 751-5293</p>
+                    <p>🍽️ Kitchen: (908) 751-5319</p>
+                    <p>🕘 Daily: 9AM - 9PM</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <p><a href="menu.html">Fresh Prepared Foods</a></p>
+                    <p><a href="delivery.html">Delivery & Takeout</a></p>
+                    <p><a href="contact.html">Catering Services</a></p>
+                    <p>Indian Grocery Shopping</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <p>Stay updated with our latest specials and fresh arrivals!</p>
+                    <div class="footer-social-links">
+                        <a href="https://www.instagram.com/shoproyalindian/" target="_blank">📷</a>
+                        <a href="tel:9087515293">📞</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Royal Indian Market. All rights reserved.</p>
+                <p>Contact Sanvir Singh For Website Feedback: <a href="mailto:singhstudios@mail.com">singhstudios@mail.com</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

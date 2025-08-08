@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Royal Indian Market</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #8B0000, #DC143C);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+            color: #8B0000;
+            font-weight: bold;
+        }
+
+        .logo-text h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .logo-text p {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .contact-info h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .contact-info p {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        nav {
+            background: #FFD700;
+            padding: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            display: block;
+            padding: 15px 30px;
+            text-decoration: none;
+            color: #8B0000;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav a:hover, nav a.active {
+            background: #FFA500;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #8B0000, #DC143C);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .page-header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        /* Menu Content */
+        .menu-content {
+            padding: 60px 0;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .menu-section {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-top: 5px solid #FFD700;
+        }
+
+        .menu-section h2 {
+            font-size: 28px;
+            color: #8B0000;
+            margin-bottom: 25px;
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #FFD700;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px dotted #ddd;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .menu-item-name {
+            font-weight: 600;
+            color: #333;
+            flex: 1;
+        }
+
+        .menu-item-price {
+            font-weight: bold;
+            color: #8B0000;
+            font-size: 16px;
+        }
+
+        /* Specials Section */
+        .weekend-specials {
+            background: linear-gradient(135deg, #8B0000, #DC143C);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .weekend-specials h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .specials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .special-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .special-item h3 {
+            font-size: 20px;
+            color: #FFD700;
+            margin-bottom: 15px;
+        }
+
+        .special-item ul {
+            list-style: none;
+            text-align: left;
+        }
+
+        .special-item li {
+            padding: 5px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .special-item li:before {
+            content: "•";
+            color: #FFD700;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Catering Section */
+        .catering-info {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            border-left: 5px solid #FFD700;
+        }
+
+        .catering-info h2 {
+            font-size: 32px;
+            color: #8B0000;
+            margin-bottom: 20px;
+        }
+
+        .catering-info p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .catering-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .catering-option {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #FFD700;
+        }
+
+        .catering-option h3 {
+            color: #8B0000;
+            margin-bottom: 10px;
+        }
+
+        .catering-option .price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #8B0000;
+        }
+
+        /* Order Info */
+        .order-info {
+            background: #FFD700;
+            color: #8B0000;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .order-info h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .order-info p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #FFD700;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ecf0f1;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: #FFD700;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #FFD700;
+            color: #2c3e50;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #34495e;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #95a5a6;
+        }
+
+        .footer-bottom a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                text-align: center;
+            }
+
+            .contact-info {
+                text-align: center;
+                margin-top: 20px;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .menu-section {
+                padding: 30px 20px;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav a {
+                padding: 12px 20px;
+            }
+
+            .page-header h1 {
+                font-size: 32px;
+            }
+
+            .specials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .catering-options {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">👑</div>
+                    <div class="logo-text">
+                        <h1>ROYAL INDIAN MARKET</h1>
+                        <p>Fresh, Authentic & Always Indian</p>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <h3>(908) 751-5293</h3>
+                    <p>37 Reaville Ave, Flemington, NJ 08822</p>
+                    <p>Daily: 9AM - 9PM</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html" class="active">Menu</a></li>
+                <li><a href="delivery.html">Delivery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Menu</h1>
+            <p>Authentic Indian cuisine prepared fresh daily with traditional recipes</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="menu-content">
+            <!-- Weekend Specials -->
+            <div class="weekend-specials">
+                <h2>🍽️ Weekend Kitchen Specials!</h2>
+                <p>Available Friday through Sunday with our live chat counter</p>
+                <div class="specials-grid">
+                    <div class="special-item">
+                        <h3>Friday Special: Tandoori Platter</h3>
+                        <ul>
+                            <li>Chicken Tikka</li>
+                            <li>Tandoori Wings</li>
+                            <li>Tandoori Chicken</li>
+                            <li>Dahi Kabab</li>
+                        </ul>
+                    </div>
+                    <div class="special-item">
+                        <h3>Weekend Live Chat Counter</h3>
+                        <ul>
+                            <li>Pani Puri</li>
+                            <li>Ragda Puri</li>
+                            <li>Katori Chat</li>
+                            <li>Palak Chat</li>
+                            <li>Bhindi Chat</li>
+                        </ul>
+                    </div>
+                    <div class="special-item">
+                        <h3>Kids & Desserts</h3>
+                        <ul>
+                            <li>Naan Pizza</li>
+                            <li>Fresh Kheer</li>
+                            <li>Traditional Sweets</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Regular Menu -->
+            <div class="menu-grid">
+                <!-- Snacks -->
+                <div class="menu-section">
+                    <h2>🥟 SNACKS</h2>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Punjabi Samosa (each)</span>
+                        <span class="menu-item-price">$1.50</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Chicken (4 Pc)</span>
+                        <span class="menu-item-price">$4.99</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Paneer (4 Pc)</span>
+                        <span class="menu-item-price">$4.99</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Jalapeño Cheese (4 Pc)</span>
+                        <span class="menu-item-price">$3.99</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Chicken (6 Pc)</span>
+                        <span class="menu-item-price">$6.99</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Spinach (4 Pc)</span>
+                        <span class="menu-item-price">$3.99</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Vada Pav</span>
+                        <span class="menu-item-price">$2.99</span>
+                    </div>
+                </div>
+
+                <!-- Briyani -->
+                <div class="menu-section">
+                    <h2>🍚 BRIYANI</h2>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Veg Briyani</span>
+                        <span class="menu-item-price">$10.99</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Chicken Briyani</span>
+                        <span class="menu-item-price">$12.99</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Lamb Briyani</span>
+                        <span class="menu-item-price">$15.99</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Goat Briyani</span>
+                        <span class="menu-item-price">$14.99</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Pulao</span>
+                        <span class="menu-item-price">$9.99</span>
+                    </div>
+                </div>
+
+                <!-- Chaat -->
+                <div class="menu-section">
+                    <h2>🌶️ CHAAT</h2>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Kachori Chaat</span>
+                        <span class="menu-item-price">$5.99</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Samosa Chaat</span>
+                        <span class="menu-item-price">$5.99</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Tikki Chaat</span>
+                        <span class="menu-item-price">$5.99</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Pani Puri (6 Pc)</span>
+                        <span class="menu-item-price">$7.99</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Dahi Puri</span>
+                        <span class="menu-item-price">$6.99</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Bhel Puri</span>
+                        <span class="menu-item-price">$5.99</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Ragda Patty</span>
+                        <span class="menu-item-price">$5.99</span>
+                    </div>
+                </div>
+
+                <!-- Veg Curry -->
+                <div class="menu-section">
+                    <h2>🥬 VEG CURRY</h2>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Navratan Korma</span>
+                        <span class="menu-item-price">$11.99</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Daal Tadka</span>
+                        <span class="menu-item-price">$11.99</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Daal Makhni</span>
+                        <span class="menu-item-price">$11.99</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Paneer Tikka Masala</span>
+                        <span class="menu-item-price">$12.99</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Palak Paneer</span>
+                        <span class="menu-item-price">$11.99</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Aloo Gobi</span>
+                        <span class="menu-item-price">$10.99</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Bhindi Masala</span>
+                        <span class="menu-item-price">$11.99</span>
+                    </div>
+                </div>
+
+                <!-- Pakora -->
+                <div class="menu-section">
+                    <h2>🧅 PAKORA</h2>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Onion (5 Pc)</span>
+                        <span class="menu-item-price">$2.99</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Paneer (5 Pc)</span>
+                        <span class="menu-item-price">$3.99</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Jalapeño Cheese (5 Pc)</span>
+                        <span class="menu-item-price">$3.49</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Potato (5 Pc)</span>
+                        <span class="menu-item-price">$3.49</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Stuffed Long Mirchi</span>
+                        <span class="menu-item-price">$2.99</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Palak (5 Pc)</span>
+                        <span class="menu-item-price">$3.49</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Spring Roll (5 Pc)</span>
+                        <span class="menu-item-price">$3.99</span>
+                    </div>
+                </div>
+
+                <!-- Rice and Noodles -->
+                <div class="menu-section">
+                    <h2>🍜 RICE AND NOODLES</h2>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Chicken Fried Rice</span>
+                        <span class="menu-item-price">$12.99</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Veg Fried Rice</span>
+                        <span class="menu-item-price">$10.99</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Chicken Hakka Noodles</span>
+                        <span class="menu-item-price">$12.99</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Veg Hakka Noodles</span>
+                        <span class="menu-item-price">$10.99</span>
+                    </div>
+                </div>
+
+                <!-- Non-Veg -->
+                <div class="menu-section">
+                    <h2>🍗 NON-VEG</h2>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Chicken Curry</span>
+                        <span class="menu-item-price">$13.99</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Lamb Curry</span>
+                        <span class="menu-item-price">$14.99</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Shrimp Curry</span>
+                        <span class="menu-item-price">$14.99</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Butter Chicken</span>
+                        <span class="menu-item-price">$13.99</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Goat Curry</span>
+                        <span class="menu-item-price">$15.99</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Fish Curry</span>
+                        <span class="menu-item-price">$13.99</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Chili Chicken</span>
+                        <span class="menu-item-price">$10.99</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Chicken Tikka Masala</span>
+                        <span class="menu-item-price">$13.99</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Catering Information -->
+            <div class="catering-info">
+                <h2>🎉 Catering Services Available</h2>
+                <p>Perfect for parties, events, and special occasions!</p>
+                <div class="catering-options">
+                    <div class="catering-option">
+                        <h3>Vegetarian Catering</h3>
+                        <p>Half Tray: <span class="price">$60</span></p>
+                        <p>Full Tray: <span class="price">$90</span></p>
+                    </div>
+                    <div class="catering-option">
+                        <h3>Non-Vegetarian Catering</h3>
+                        <p>Half Tray: <span class="price">$65</span></p>
+                        <p>Full Tray: <span class="price">$105</span></p>
+                        <p>Lamb Half Tray: <span class="price">$90</span></p>
+                        <p>Lamb Full Tray: <span class="price">$140</span></p>
+                    </div>
+                    <div class="catering-option">
+                        <h3>Seafood Catering</h3>
+                        <p>Half Tray: <span class="price">$120</span></p>
+                        <p>Full Tray: <span class="price">$190</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Information -->
+            <div class="order-info">
+                <h3>📞 Ready to Order?</h3>
+                <p><strong>Call us at (908) 751-5293</strong></p>
+                <p>Kitchen Orders: (908) 751-5319</p>
+                <p>Available for pickup, delivery, and catering!</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p>📍 37 Reaville Ave, Flemington, NJ 08822</p>
+                    <p>📞 (908) 751-5293</p>
+                    <p>🍽️ Kitchen: (908) 751-5319</p>
+                    <p>🕘 Daily: 9AM - 9PM</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <p><a href="menu.html">Fresh Prepared Foods</a></p>
+                    <p><a href="delivery.html">Delivery & Takeout</a></p>
+                    <p><a href="contact.html">Catering Services</a></p>
+                    <p>Indian Grocery Shopping</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <p>Stay updated with our latest specials and fresh arrivals!</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/shoproyalindian/" target="_blank">📷</a>
+                        <a href="tel:9087515293">📞</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Royal Indian Market. All rights reserved.</p>
+                <p>Contact Sanvir Singh For Website Feedback: <a href="mailto:singhstudios@mail.com">singhstudios@mail.com</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
